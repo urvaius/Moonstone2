@@ -85,7 +85,7 @@ public class FlashLightActivity extends AppCompatActivity {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 mCameraManager.setTorchMode(mCameraId, true);
                 playOnSound();
-                mTorchOnOffButton.setImageResource(R.drawable.rey);
+                mTorchOnOffButton.setImageResource(R.drawable.green_lightsaber);
                // playRunSound();
             }
         } catch (Exception e) {
@@ -100,7 +100,7 @@ public class FlashLightActivity extends AppCompatActivity {
                 mCameraManager.setTorchMode(mCameraId, false);
 
                 playOffSound();
-                mTorchOnOffButton.setImageResource(R.drawable.kylo);
+                mTorchOnOffButton.setImageResource(R.drawable.green_lightsaberoff);
 
             }
 

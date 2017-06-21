@@ -14,5 +14,5 @@
         android:layout_height="wrap_content"
         android:background="#000"
         android:scaleType="centerCrop"
-        app:srcCompat="@drawable/kylo" />
+        app:srcCompat="@drawable/green_lightsaberoff" />
 </LinearLayout>
