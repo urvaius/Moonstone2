@@ -29,9 +29,10 @@ public class FlashLightActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        
+
         super.onCreate(savedInstanceState);
         Log.d("FlashLightActivity","OnCreate()");
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_flash_light);
         mTorchOnOffButton = (ImageButton) findViewById(R.id.button_on_off);
         isTorchOn = false;
