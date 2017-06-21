@@ -12,9 +12,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.ImageButton;
-
-import java.io.IOException;
 
 public class FlashLightActivity extends AppCompatActivity {
 
@@ -30,6 +29,7 @@ public class FlashLightActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        
         super.onCreate(savedInstanceState);
         Log.d("FlashLightActivity","OnCreate()");
         setContentView(R.layout.activity_flash_light);
@@ -84,7 +84,7 @@ public class FlashLightActivity extends AppCompatActivity {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 mCameraManager.setTorchMode(mCameraId, true);
                 playOnSound();
-                mTorchOnOffButton.setImageResource(R.drawable.on);
+                mTorchOnOffButton.setImageResource(R.drawable.rey);
                // playRunSound();
             }
         } catch (Exception e) {
@@ -99,7 +99,7 @@ public class FlashLightActivity extends AppCompatActivity {
                 mCameraManager.setTorchMode(mCameraId, false);
 
                 playOffSound();
-                mTorchOnOffButton.setImageResource(R.drawable.off);
+                mTorchOnOffButton.setImageResource(R.drawable.kylo);
 
             }
 
