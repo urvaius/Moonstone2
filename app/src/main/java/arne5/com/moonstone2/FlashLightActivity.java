@@ -14,6 +14,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 
+import java.io.IOException;
+
 public class FlashLightActivity extends AppCompatActivity {
 
     private CameraManager mCameraManager;
@@ -21,6 +23,10 @@ public class FlashLightActivity extends AppCompatActivity {
     private ImageButton mTorchOnOffButton;
     private Boolean isTorchOn;
     private MediaPlayer mp;
+    private MediaPlayer mp2;
+    private MediaPlayer mp3;
+    private LoopMediaPlayer lp1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,8 +83,9 @@ public class FlashLightActivity extends AppCompatActivity {
         try {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 mCameraManager.setTorchMode(mCameraId, true);
-                playOnOffSound();
+                playOnSound();
                 mTorchOnOffButton.setImageResource(R.drawable.on);
+               // playRunSound();
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -90,7 +97,8 @@ public class FlashLightActivity extends AppCompatActivity {
         try {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 mCameraManager.setTorchMode(mCameraId, false);
-                playOnOffSound();
+
+                playOffSound();
                 mTorchOnOffButton.setImageResource(R.drawable.off);
 
             }
@@ -99,18 +107,68 @@ public class FlashLightActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
-    private void playOnOffSound(){
+    private void playOnSound(){
 
-        mp = MediaPlayer.create(FlashLightActivity.this, R.raw.flash_sound);
+        mp = MediaPlayer.create(FlashLightActivity.this, R.raw.fx4);
+        mp2 = MediaPlayer.create(FlashLightActivity.this,R.raw.saberftn);
+        lp1 = LoopMediaPlayer.create(FlashLightActivity.this,R.raw.saberftn);
+
+       // mp2.setLooping(true);
         mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
 
             @Override
             public void onCompletion(MediaPlayer mp) {
                 // TODO Auto-generated method stub
+
                 mp.release();
+                lp1.start();
+
+
+
             }
         });
+        mp2.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+
+            @Override
+            public void onCompletion(MediaPlayer mp2) {
+                // TODO Auto-generated method stub
+                mp2.release();
+            }
+        });
+
+        //lp1.start();
         mp.start();
+
+        //mp.setNextMediaPlayer(mp2);
+
+
+
+
+    }
+
+
+    private void playOffSound(){
+        if(lp1.isPlaying())
+        {
+            lp1.stop();
+            lp1.release();
+        }
+       if( mp2.isPlaying())
+        {
+            mp2.stop();
+
+            mp2.release();
+        }
+        mp3 = MediaPlayer.create(FlashLightActivity.this, R.raw.fx5);
+        mp3.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+
+            @Override
+            public void onCompletion(MediaPlayer mp3) {
+                // TODO Auto-generated method stub
+                mp3.release();
+            }
+        });
+        mp3.start();
     }
     @Override
     protected void onStop() {
