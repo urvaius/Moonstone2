@@ -2,6 +2,7 @@ package arne5.com.moonstone2;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.hardware.camera2.CameraAccessException;
 import android.hardware.camera2.CameraManager;
@@ -33,6 +34,7 @@ public class FlashLightActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Log.d("FlashLightActivity","OnCreate()");
         requestWindowFeature(Window.FEATURE_NO_TITLE);
+        setRequestedOrientation((ActivityInfo.SCREEN_ORIENTATION_PORTRAIT));
         setContentView(R.layout.activity_flash_light);
         mTorchOnOffButton = (ImageButton) findViewById(R.id.button_on_off);
         isTorchOn = false;
