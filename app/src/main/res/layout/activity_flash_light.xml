@@ -5,15 +5,23 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#000"
-    android:weightSum="1">
+    android:weightSum="100">
 
 
     <ImageButton
         android:id="@+id/button_on_off"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_weight="90"
+        android:layout_marginBottom="1dp"
         android:background="#000"
         android:scaleType="centerCrop"
         app:srcCompat="@drawable/green_lightsaberoff" />
-    
+
+    <Button
+        android:id="@+id/btnSound"
+        android:layout_width="match_parent"
+        android:layout_height="41dp"
+        android:layout_weight="10"
+        android:text="Sound on/off" />
 </LinearLayout>

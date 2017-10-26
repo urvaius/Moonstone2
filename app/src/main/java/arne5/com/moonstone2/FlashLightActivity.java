@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.ImageButton;
 
 public class FlashLightActivity extends AppCompatActivity {
@@ -26,6 +27,7 @@ public class FlashLightActivity extends AppCompatActivity {
     private MediaPlayer mp2;
     private MediaPlayer mp3;
     private LoopMediaPlayer lp1;
+    private Button buttonSound;
 
 
     @Override
@@ -37,6 +39,7 @@ public class FlashLightActivity extends AppCompatActivity {
         setRequestedOrientation((ActivityInfo.SCREEN_ORIENTATION_PORTRAIT));
         setContentView(R.layout.activity_flash_light);
         mTorchOnOffButton = (ImageButton) findViewById(R.id.button_on_off);
+        buttonSound = (Button) findViewById((R.id.btnSound));
         isTorchOn = false;
 
 
@@ -64,6 +67,25 @@ public class FlashLightActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
 
+            buttonSound.setOnClickListener(new View.OnClickListener()
+            {
+                @Override
+                public void onClick(View v)
+                {
+                    if(isTorchOn)
+                    {
+                        playOffSound();
+                    }
+
+                    if(!isTorchOn)
+
+                    {
+                        playOnSound();
+                    }
+
+                }
+
+            });
             mTorchOnOffButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -71,7 +93,9 @@ public class FlashLightActivity extends AppCompatActivity {
                         if (isTorchOn) {
                             turnOffFlashLight();
                             isTorchOn = false;
-                        } else {
+                        }
+                        else
+                        {
                             turnOnFlashLight();
                             isTorchOn = true;
                         }
